@@ -26,5 +26,8 @@ namespace Galeria.Models
         [Required(ErrorMessage = "Campo obrigatório.")]
         [DataType(DataType.Date)]
         public DateTime Fim { get; set; }
+
+        public ICollection<Imagem> Imagens { get; set; }
+
     }
 }

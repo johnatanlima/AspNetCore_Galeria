@@ -12,5 +12,8 @@ namespace Galeria.Data
 
         public DbSet<Pessoa> Pessoas { get; set; }
 
+        public DbSet<Album> Albuns { get; set; }
+
+        public DbSet<Imagem> Imagens { get; set; }
     }
 }
