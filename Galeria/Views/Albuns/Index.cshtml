@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Galeria.Models.Album>
+
+@{
+    ViewData["Title"] = "Albuns";
+}
+
+<h1>Albuns</h1>
+
+<div class="listaDestinos">
+    <div class="container">
+        <p>
+            <a class="waves-effect waves-light btn-small" asp-action="Create"> Novo Album</a>
+        </p>
+
+        <table class="table striped highlight hover responsive-table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Destino)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Inicio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fim)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Destino)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Inicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fim)
+                        </td>
+                        <td>
+                            <a class="btn-small blue darken-2" asp-action="Edit" asp-route-id="@item.AlbumId">Atualizar</a> |
+                            <a asp-action="Details" asp-route-id="@item.AlbumId">Fotos</a> |
+                            <a asp-action="Delete" asp-route-id="@item.AlbumId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
