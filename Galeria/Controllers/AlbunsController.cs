@@ -4,16 +4,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Galeria.Data;
 using Galeria.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using System.IO;
+using System;
 
 namespace Galeria.Controllers
 {
     public class AlbunsController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IHostEnvironment _env;
 
-        public AlbunsController(AppDbContext context)
+        public AlbunsController(AppDbContext context, IHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         // GET: Albuns
@@ -51,14 +57,27 @@ namespace Galeria.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AlbumId,Destino,FotoTopo,Inicio,Fim")] Album album)
+        public async Task<IActionResult> Create([Bind("AlbumId,Destino,FotoTopo,Inicio,Fim")] Album album, IFormFile file)
         {
             if (ModelState.IsValid)
             {
+                var destinoFotos = Path.Combine(_env.ContentRootPath, "wwwwroot/Imagens");
+
+                if(file != null)
+                {
+                    using (var fs = new FileStream(Path.Combine(destinoFotos, file.FileName), FileMode.Create))
+                    {
+                        await file.CopyToAsync(fs);
+                        album.FotoTopo = "~/Imagens/" + file.FileName;
+
+                    }
+                }
+
                 _context.Add(album);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(album);
         }
 
@@ -71,11 +90,17 @@ namespace Galeria.Controllers
             }
 
             var album = await _context.Albuns.FindAsync(id);
+           
             if (album == null)
             {
                 return NotFound();
             }
+
+            TempData["FotoTopo"] = album.FotoTopo;
+            
             return View(album);
+        
+            
         }
 
         // POST: Albuns/Edit/5
@@ -83,17 +108,22 @@ namespace Galeria.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AlbumId,Destino,FotoTopo,Inicio,Fim")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("AlbumId,Destino,FotoTopo,Inicio,Fim")] Album album, IFormFile file)
         {
             if (id != album.AlbumId)
             {
                 return NotFound();
             }
 
+            if (String.IsNullOrEmpty(album.FotoTopo))
+                album.FotoTopo = TempData["FotoTopo"].ToString();
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    var linkImagem = Path.Combine(_env.ContentRootPath, "wwwroot/Imagens");
+
                     _context.Update(album);
                     await _context.SaveChangesAsync();
                 }
@@ -113,33 +143,15 @@ namespace Galeria.Controllers
             return View(album);
         }
 
-        // GET: Albuns/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var album = await _context.Albuns
-                .FirstOrDefaultAsync(m => m.AlbumId == id);
-            if (album == null)
-            {
-                return NotFound();
-            }
-
-            return View(album);
-        }
-
         // POST: Albuns/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [HttpPost]
+        public async Task<JsonResult> Delete(int AlbumId)
         {
-            var album = await _context.Albuns.FindAsync(id);
+            var album = await _context.Albuns.FindAsync(AlbumId);
             _context.Albuns.Remove(album);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return Json("Album excluído com sucesso!");
         }
 
         private bool AlbumExists(int id)

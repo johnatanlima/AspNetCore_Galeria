@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tYjU3ISL4sIfUqpMGt5ylFkQyXyDmZUHaTaGUWuS8kfqcDq/Fx350xEjpJsZehFU+dPz2F/Wv5ZIRpFaJnA8dg==",
+  "dgSpecHash": "4gROhg5im4AnE7bsDER7Vya+PhrHOVFKTq4mtzW6viE6CsdjZ9M2iv1UrXWUi4vQUOTKaNEzbTsj42pQ5KLuYw==",
   "success": true,
   "projectFilePath": "C:\\Users\\johw2\\Desktop\\Workspace .NET Core\\AspNetCore_Galeria\\Galeria\\Galeria.csproj",
   "expectedPackageFiles": [
@@ -178,8 +178,7 @@
     "C:\\Users\\johw2\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\johw2\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\johw2\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\johw2\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\johw2\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\johw2\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

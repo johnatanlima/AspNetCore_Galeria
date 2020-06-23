@@ -44,8 +44,8 @@
                         </td>
                         <td>
                             <a class="btn-small blue darken-2" asp-action="Edit" asp-route-id="@item.AlbumId">Atualizar</a> |
-                            <a asp-action="Details" asp-route-id="@item.AlbumId">Fotos</a> |
-                            <a asp-action="Delete" asp-route-id="@item.AlbumId">Delete</a>
+                            <a class="btn-small orange darken-4" asp-action="Details" asp-route-id="@item.AlbumId">Fotos</a> |
+                            <a class="btn-small text-white red darken-4 modal-trigger" data-target="modal1" onclick="Excluir(@item.AlbumId)"> Excluir </a>
                         </td>
                     </tr>
                 }
@@ -54,3 +54,42 @@
 
     </div>
 </div>
+
+@*Meu modal*@
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4> Confirmar Exclusão</h4>
+        <p>Deseja continuar com a exclusão? </p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat btn-Confirmar">Sim</a>
+        <a class="fechar waves-effect waves-red btn-flat"> Cancelar </a>
+       
+    </div>
+</div>
+
+<script>
+    function Excluir(AlbumId) {
+        $(".modal").modal();
+
+        $(".btn-Confirmar").on('click', function () {
+            $.ajax({
+                url: '/Albuns/Delete',
+                type: 'POST',
+                data: { AlbumId: AlbumId },
+                success: function (data) {
+                    alert(data);
+                    location.reload();
+                    $(".modal").modal('close');
+                }
+            })
+        })
+    }
+
+
+    $('.fechar').on('click', function () {
+        $(".modal").modal('close');
+    })
+
+</script>

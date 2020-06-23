@@ -14,7 +14,6 @@ namespace Galeria.Models
         [StringLength(64, ErrorMessage ="Limite de caracteres excedido.")]
         public string Destino { get; set; }
 
-        [Required(ErrorMessage ="Campo obrigatório.")]
         public string FotoTopo { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório.")]
