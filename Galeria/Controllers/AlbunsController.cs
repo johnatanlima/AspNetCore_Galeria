@@ -96,7 +96,6 @@ namespace Galeria.Controllers
                 return NotFound();
             }
 
-            TempData["FotoTopo"] = album.FotoTopo;
             
             return View(album);
         
@@ -107,7 +106,6 @@ namespace Galeria.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AlbumId,Destino,FotoTopo,Inicio,Fim")] Album album, IFormFile file)
         {
             if (id != album.AlbumId)
@@ -115,17 +113,27 @@ namespace Galeria.Controllers
                 return NotFound();
             }
 
-            if (String.IsNullOrEmpty(album.FotoTopo))
-                album.FotoTopo = TempData["FotoTopo"].ToString();
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var linkImagem = Path.Combine(_env.ContentRootPath, "wwwroot/Imagens");
+                    var destinoImagem = Path.Combine(_env.ContentRootPath, "wwwroot/Imagens");
 
-                    _context.Update(album);
-                    await _context.SaveChangesAsync();
+                    if(file != null)
+                    {
+                        using (var fs = new FileStream(Path.Combine(destinoImagem, file.FileName), FileMode.Create))
+                        {
+                           await file.CopyToAsync(fs);
+                            album.FotoTopo = "~/Imagens/" + file.FileName;
+
+                            _context.Update(album);
+                            await _context.SaveChangesAsync();
+                        }
+
+                    }
+
+                   
                 }
                 catch (DbUpdateConcurrencyException)
                 {

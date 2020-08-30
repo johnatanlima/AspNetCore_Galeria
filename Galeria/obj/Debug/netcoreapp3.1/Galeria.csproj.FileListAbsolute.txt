@@ -50,7 +50,6 @@ C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\
 C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\obj\Debug\netcoreapp3.1\Galeria.csprojAssemblyReference.cache
 C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\obj\Debug\netcoreapp3.1\Galeria.AssemblyInfoInputs.cache
 C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\obj\Debug\netcoreapp3.1\Galeria.AssemblyInfo.cs
 C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\obj\Debug\netcoreapp3.1\Galeria.RazorAssemblyInfo.cache
@@ -190,3 +189,9 @@ C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\obj\Debug\
 C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\obj\Debug\netcoreapp3.1\Razor\Views\Albuns\Details.cshtml.g.cs
 C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\obj\Debug\netcoreapp3.1\Razor\Views\Albuns\Edit.cshtml.g.cs
 C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\obj\Debug\netcoreapp3.1\Razor\Views\Albuns\Index.cshtml.g.cs
+C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\johw2\Desktop\Workspace .NET Core\AspNetCore_Galeria\Galeria\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
